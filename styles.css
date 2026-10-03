@@ -1,22 +1,60 @@
+:root {
+    --ink: #090b0d;
+    --panel: rgba(12, 16, 18, 0.92);
+    --panel-light: rgba(28, 33, 33, 0.94);
+    --paper: #e8e1cd;
+    --muted: #b7b09e;
+    --leaf: #6f8f3d;
+    --leaf-light: #a8c16a;
+    --fire: #d9572b;
+    --fire-bright: #f0783c;
+    --line: rgba(168, 193, 106, 0.34);
+}
+
 body {
-    background: linear-gradient(#8412B0, #000);
+    background: var(--ink);
+    color: var(--paper);
     font-family: 'Consolas', sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    position: relative;
+    isolation: isolate;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: linear-gradient(rgba(4, 7, 8, 0.379), rgba(4, 7, 8, 0.465)), url('Konohagakure.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.82;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(125deg, rgba(8, 12, 12, 0.76), rgba(73, 31, 20, 0.27) 52%, rgba(5, 8, 9, 0.82));
+    pointer-events: none;
 }
 
 h1 {
-    color: #FFF;
+    color: var(--paper);
     text-align: center;
     margin-top: 20px;
     font-size: 2.5em;
     display: inline;
-    text-shadow: 0 0 10px #FC199A, 0 0 20px #FC199A, 0 0 30px #FC199A, 0 0 40px #FF007F, 0 0 50px #FF007F;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 var(--ink), 0 0 18px rgba(240, 120, 60, 0.72);
 }
 
 .container {
@@ -31,16 +69,18 @@ h1 {
 
 .formContainer {
     text-align: center;
-    background-color: #FF007F;
+    background-color: var(--panel);
     padding: 20px;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--fire);
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.46);
     width: 20%;
     margin-right: 20px;
 }
 
 label {
-    color: #00FFFF;
+    color: var(--leaf-light);
     font-size: 14px;
     margin-right: 10px;
 }
@@ -49,25 +89,33 @@ input {
     padding: 8px;
     margin-right: 10px;
     margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-radius: 4px;
+    border: 1px solid #555b50;
+    background: rgba(4, 6, 7, 0.78);
+    color: var(--paper);
     width: 100%;
     box-sizing: border-box;
 }
 
+input:focus {
+    outline: 2px solid var(--leaf);
+    outline-offset: 1px;
+}
+
 button {
-    background-color: #FFCC00;
-    color: #8412B0;
+    background-color: var(--fire);
+    color: #fff8e6;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
     width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
-    background-color: #FC199A;
+    background-color: var(--fire-bright);
     color: #fff;
 }
 
@@ -75,39 +123,40 @@ table {
     width: 60%;
     border-collapse: collapse;
     margin: 0 auto;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.46);
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--line);
     padding: 12px 15px;
     text-align: left;
 }
 
 th {
-    background-color: #FC199A;
-    color: white;
+    background-color: rgba(43, 54, 42, 0.96);
+    color: var(--leaf-light);
+    letter-spacing: 0.5px;
 }
 
 td {
-    background-color: #00FFFF;
-    color: #8412B0;
+    background-color: rgba(14, 18, 18, 0.91);
+    color: var(--paper);
 }
 
 .delete-btn {
-    background-color: #f0745e;
-    color: white;
+    background-color: #713326;
+    color: #fff8e6;
     border: none;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 .delete-btn:hover {
-    background-color: #ff0800;
+    background-color: #a8472f;
 }
 
-
 #productsTable tbody tr {
-    background-color: #FFF;
-    color: #000;
+    background-color: var(--panel-light);
+    color: var(--paper);
 }
