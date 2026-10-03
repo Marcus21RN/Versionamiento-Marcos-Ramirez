@@ -159,4 +159,77 @@ td {
 #productsTable tbody tr {
     background-color: var(--panel-light);
     color: var(--paper);
+   background-color: #ff0800;
+}
+
+
+#productsTable tbody tr {
+    background-color: #FFF;
+    color: #000;
+
+}
+
+.delete-btn:hover {
+    background-color: #a8472f;
+}
+
+#productsTable tbody tr {
+    background-color: var(--panel-light);
+    color: var(--paper);
+}
+
+.leaf-particles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.leaf-particle {
+    position: absolute;
+    top: -8vh;
+    left: var(--leaf-left);
+    width: var(--leaf-size);
+    height: calc(var(--leaf-size) * 0.62);
+    background: var(--leaf-color);
+    border-radius: 0 100% 0 100%;
+    opacity: var(--leaf-opacity);
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.35));
+    transform: rotate(35deg);
+    animation: leaf-fall var(--leaf-duration) linear var(--leaf-delay) infinite;
+}
+
+.leaf-particle::after {
+    content: '';
+    position: absolute;
+    left: 48%;
+    top: 8%;
+    width: 1px;
+    height: 88%;
+    background: rgba(238, 220, 161, 0.45);
+    transform: rotate(-38deg);
+    transform-origin: center;
+}
+
+@keyframes leaf-fall {
+    0% {
+        transform: translate3d(0, -12vh, 0) rotate(35deg);
+    }
+    35% {
+        transform: translate3d(var(--leaf-drift-one), 34vh, 0) rotate(150deg);
+    }
+    70% {
+        transform: translate3d(var(--leaf-drift-two), 72vh, 0) rotate(270deg);
+    }
+    100% {
+        transform: translate3d(var(--leaf-drift-three), 118vh, 0) rotate(405deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .leaf-particle {
+        animation: none;
+        opacity: 0;
+    }
 }

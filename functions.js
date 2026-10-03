@@ -98,3 +98,32 @@ function deleteProduct(event) {
 
 //Event listener for the button click
 document.getElementById('addProduct').addEventListener('click', addProduct);
+
+function createLeafParticles() {
+    const particleLayer = document.createElement('div');
+    particleLayer.className = 'leaf-particles';
+    particleLayer.setAttribute('aria-hidden', 'true');
+
+    const leafColors = ['#6f8f3d', '#8fa94f', '#b0bd66', '#d18b3b'];
+
+    for (let index = 0; index < 22; index += 1) {
+        const leaf = document.createElement('span');
+        const randomBetween = (minimum, maximum) => Math.random() * (maximum - minimum) + minimum;
+
+        leaf.className = 'leaf-particle';
+        leaf.style.setProperty('--leaf-left', `${randomBetween(-5, 100)}vw`);
+        leaf.style.setProperty('--leaf-size', `${randomBetween(10, 22)}px`);
+        leaf.style.setProperty('--leaf-opacity', randomBetween(0.55, 0.9).toFixed(2));
+        leaf.style.setProperty('--leaf-color', leafColors[index % leafColors.length]);
+        leaf.style.setProperty('--leaf-duration', `${randomBetween(9, 18).toFixed(2)}s`);
+        leaf.style.setProperty('--leaf-delay', `${randomBetween(-18, 0).toFixed(2)}s`);
+        leaf.style.setProperty('--leaf-drift-one', `${randomBetween(-12, 12).toFixed(2)}vw`);
+        leaf.style.setProperty('--leaf-drift-two', `${randomBetween(-18, 18).toFixed(2)}vw`);
+        leaf.style.setProperty('--leaf-drift-three', `${randomBetween(-25, 25).toFixed(2)}vw`);
+        particleLayer.appendChild(leaf);
+    }
+
+    document.body.appendChild(particleLayer);
+}
+
+createLeafParticles();
